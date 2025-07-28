@@ -1,0 +1,43 @@
+# 1. Builder Stage: Install dependencies and build the application
+FROM node:20-slim AS builder
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+WORKDIR /app
+
+# Copy dependency definition files
+COPY package.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application source code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# 2. Runner Stage: Create the final production image
+FROM node:20-slim AS runner
+WORKDIR /app
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# Copy the standalone Next.js output from the builder stage
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/package.json ./
+
+# The Next.js standalone output does not include the public directory or .next/static
+# so they need to be copied manually.
+# This application does not have a public directory.
+# COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/static ./.next/static
+
+# Expose the port the app runs on
+EXPOSE 9002
+
+# Start the application
+CMD ["node", "server.js"]
