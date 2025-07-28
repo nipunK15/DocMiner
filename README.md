@@ -1,6 +1,6 @@
-# DocuMiner AI
+# DocuMiner 
 
-DocuMiner AI is an intelligent web application designed to help users analyze and extract key information from multiple PDF documents simultaneously. By leveraging the power of generative AI, users can define a specific persona and "job-to-be-done" to receive highly relevant, context-aware insights from their documents.
+DocuMiner is an intelligent web application designed to help users analyze and extract key information from multiple PDF documents simultaneously. By leveraging the power of generative AI, users can define a specific persona and "job-to-be-done" to receive highly relevant, context-aware insights from their documents.
 
 ## Key Features
 
