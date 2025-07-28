@@ -80,4 +80,3 @@ Follow these instructions to get a copy of the project up and running on your lo
 4.  **Review Results**: The "Analysis Results" panel will populate with cards for each extracted section, sorted by importance.
 5.  **Chat with AI**: Click the "Chat about this section" button on any card to open a dialog and ask specific questions about that section's content.
 6.  **Download**: Click the "Download as PDF" button to save the analysis results.
-# DocMiner
